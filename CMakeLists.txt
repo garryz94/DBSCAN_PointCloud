@@ -13,11 +13,6 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-find_package(OpenCV)
-include_directories(${OpenCV_INCLUDE_DIRS})
-link_directories(${OpenCV_LIBRARY_DIRS})
-add_definitions(${OpenCV_DEFINITIONS})
-
 include_directories(core/include
                     common/include
                     modules/cloud_io/include
@@ -29,12 +24,11 @@ add_library(lib_cloud_io
 add_library(lib_dbscan
             modules/cloud_cluster/src/dbscan.cpp)
 
-list(INSERT _VECTORMAP_LIBRARIES_ 0 ${PCL_LIBRARIES})
-list(INSERT _VECTORMAP_LIBRARIES_ 0 ${Boost_LIBRARIES})
-list(INSERT _VECTORMAP_LIBRARIES_ 0 ${OpenCV_LIBRARIES})
-list(INSERT _VECTORMAP_LIBRARIES_ 0 glog)
-list(INSERT _VECTORMAP_LIBRARIES_ 0 lib_cloud_io)
-list(INSERT _VECTORMAP_LIBRARIES_ 0 lib_dbscan)
+list(INSERT _Sem2Vec_LIBRARIES_ 0 ${PCL_LIBRARIES})
+list(INSERT _Sem2Vec_LIBRARIES_ 0 ${Boost_LIBRARIES})
+list(INSERT _Sem2Vec_LIBRARIES_ 0 glog)
+list(INSERT _Sem2Vec_LIBRARIES_ 0 lib_cloud_io)
+list(INSERT _Sem2Vec_LIBRARIES_ 0 lib_dbscan)
 
 add_executable(main main.cpp)
-target_link_libraries(main ${_VECTORMAP_LIBRARIES_})
+target_link_libraries(main ${_Sem2Vec_LIBRARIES_})
