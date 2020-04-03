@@ -4,5 +4,6 @@
 you need to install pcl and boost to run this demo
 
 cd DBSCAN_PointCloud && mkdir build && cd build && cmake .. && make
+
 ./main
 
